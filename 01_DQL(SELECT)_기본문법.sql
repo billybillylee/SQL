@@ -1,0 +1,190 @@
+SELECT 
+	   DEPT_ID
+	 , DEPT_NAME
+FROM 
+	   DEPT d ;
+
+SELECT
+	   WARD_NAME
+FROM
+	   WARD w ;
+
+SELECT doctor_name
+	 , hire_date
+FROM   DOCTOR d ;
+
+SELECT patient_name
+	 , gender
+FROM   PATIENT p ;
+
+SELECT birth_date
+	 , patient_name
+FROM   PATIENT p ;
+
+SELECT 
+	   patient_name
+	 , height_cm
+	 , height_cm / 100
+FROM
+       PATIENT p ;
+
+SELECT 
+	   patient_name
+	 , weight_kg
+	 , WEIGHT_KG / ((HEIGHT_CM / 100) * (HEIGHT_CM / 100))
+FROM
+	   PATIENT;
+
+SELECT 
+	   PATIENT_NAME
+	 , ADMISSION_DATE 
+	 , DISCHARGE_DATE
+	 , DISCHARGE_DATE - ADMISSION_DATE 
+  FROM 
+	   PATIENT;
+
+SELECT 
+	   PATIENT_NAME 
+	 , ADMISSION_DATE 
+	 , SYSDATE - ADMISSION_DATE 
+  FROM 
+	   PATIENT;
+
+SELECT 
+	   HEIGHT_CM AS CM
+	 , 'cm' 
+FROM 
+	   PATIENT;
+
+SELECT 
+	   DISTINCT BLOOD_TYPE
+FROM   PATIENT;
+
+SELECT PATIENT_NAME name
+	 , WEIGHT_KG kg
+FROM 
+	   PATIENT
+WHERE
+	   WEIGHT_KG  >= 80;
+
+SELECT GENDER gender
+	 , PATIENT_NAME name	 
+FROM 
+      PATIENT
+WHERE 
+	  GENDER != 'F';
+
+SELECT PATIENT_NAME
+	 , WARD_ID
+	 , HEIGHT_CM
+FROM
+	   PATIENT
+WHERE 
+	   WARD_ID = 'W3'
+OR    
+	   HEIGHT_CM = '170';
+
+SELECT 
+	   PATIENT_NAME
+	 , HEIGHT_CM
+FROM 
+	   PATIENT
+WHERE
+	   HEIGHT_CM >= '160'
+AND    
+	   HEIGHT_CM <= '170';
+
+SELECT 
+		PATIENT_NAME
+      , HEIGHT_CM
+FROM
+ 		PATIENT
+WHERE 
+		HEIGHT_CM BETWEEN 160 AND 170;
+
+SELECT 
+	   PATIENT_NAME
+	 , BIRTH_DATE
+FROM
+	 PATIENT
+WHERE
+	  BIRTH_DATE BETWEEN TO_DATE('1990-01-01', 'YYYY-MM-DD') 
+					 AND TO_DATE('1999-12-31', 'YYYY-MM-DD');
+
+SELECT 
+	   PATIENT_NAME 환자명
+	 , DIAGNOSIS 질병명
+FROM 
+	 PATIENT
+WHERE 
+	  DIAGNOSIS LIKE '%급성%'; 
+
+SELECT 
+	   DOCTOR_ID
+	 , DOCTOR_NAME
+FROM 
+	   DOCTOR
+WHERE
+	  DOCTOR_NAME LIKE '__';
+
+SELECT 
+	   PATIENT_NAME
+	 , DISCHARGE_DATE
+FROM PATIENT
+WHERE
+	 DISCHARGE_DATE IS NOT NULL;
+
+SELECT 
+	   PATIENT_NAME || '의 담당의 코드는 ' || DOCTOR_ID || ' 입니다.' 
+FROM
+	PATIENT;
+
+SELECT
+	   PATIENT_NAME
+	 , BLOOD_TYPE
+FROM
+	   PATIENT
+WHERE
+	  BLOOD_TYPE IN ('A', 'B', 'O');
+
+SELECT 
+	   PATIENT_NAME
+	 , WARD_ID
+	 , GENDER
+FROM 
+	   PATIENT
+WHERE 
+	   WARD_ID = 'W3'
+AND    GENDER ='M';
+ 
+SELECT 
+		PATIENT_NAME	
+      , HEIGHT_CM
+FROM
+        PATIENT
+ORDER
+   BY 
+        HEIGHT_CM;
+
+SELECT
+       PATIENT_NAME
+     , HEIGHT_CM / 100 키
+FROM
+	   PATIENT
+WHERE
+	   HEIGHT_CM / 100 >= 1.5
+ORDER
+   BY
+   		키 DESC;
+
+SELECT 
+	    PATIENT_NAME
+	 ,	WARD_ID
+FROM 
+		PATIENT
+ORDER
+   BY
+   	   WARD_ID
+   	 , PATIENT_NAME; 
+	 
+	
